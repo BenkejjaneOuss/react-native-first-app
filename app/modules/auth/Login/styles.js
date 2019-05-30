@@ -2,8 +2,9 @@ import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
 	btn: {
-		alignSelf: 'center'
+		alignSelf: 'center',
 	},
+
 	marginBottom: {
 		marginBottom: 30
 	},

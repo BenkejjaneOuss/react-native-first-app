@@ -1,18 +1,40 @@
 import React, {Component} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { createAppContainer, createBottomTabNavigator } from 'react-navigation';
+import { createAppContainer, createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 
 import Home from './home'
 import Login from './login'
+import Register from './register'
+import Splash from './splash'
 
+const AppNavigator = createStackNavigator({
+  Splash: {
+    screen: Splash,
+  },
+        Home: {
+          screen: Home,
+      
+      },
+	Login: Login,
+	Register: Register
+})
+
+/*
 const AppNavigator = createBottomTabNavigator({
 
     Home: {
         screen: Home,
+
         
     },
     Login: {
         screen : Login,
+        navigationOptions: ({ navigation }) => ({
+            tabBarVisible: false,
+        }),
+    },
+    Register: {
+        screen : Register,
     }
 },
 {
@@ -27,16 +49,18 @@ const AppNavigator = createBottomTabNavigator({
           // You can check the implementation below.
           //IconComponent = HomeIconWithBadge; 
         } else if (routeName === 'Login') {
-          iconName = `ios-options`;
+          iconName = `ios-person`;
+        } else if (routeName === 'Register') {
+          iconName = `ios-add`;
         }
 
         // You can return any component that you like here!
         return <Ionicons name={iconName} size={25} color={tintColor} />;
       },
     }),
-    order: ['Home', 'Login'],
+    order: ['Home', 'Login','Register'],
     tabBarOptions: {
-        showIcon: true,
+      showIcon: true,
     showLabel: true,
         
       activeTintColor: 'tomato',
@@ -44,6 +68,6 @@ const AppNavigator = createBottomTabNavigator({
     },
   }
 )
-
+*/
 const AppContainer = createAppContainer(AppNavigator);
 export default AppContainer;

@@ -1,6 +1,18 @@
 import React, { Component } from 'react'
-import { Platform, StyleSheet, Text, View } from 'react-native'
+import { Platform, StyleSheet } from 'react-native'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import {   Container,
+  Header,
+  Title,
+  Content,
+  Button,
+  Icon,
+  Left,
+  Right,
+  Body,
+  Text} from 'native-base'
 
+import AsyncStorage from '@react-native-community/async-storage';
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
     android:
@@ -9,6 +21,9 @@ const instructions = Platform.select({
   });
 
 export default class Home extends Component{
+  static navigationOptions = {
+		header: null
+	}
     constructor (){
         super()
         this.state= {
@@ -16,23 +31,48 @@ export default class Home extends Component{
         }
     }
 
+    _onLogoutPress() {
+      AsyncStorage.removeItem('auth_token')
+      this.props.navigation.navigate('Login') 
+    }
+
     render(){
         return (
-            <View style={styles.container}>
-                <Text style={styles.welcome}>Welcome to React Native!</Text>
-                <Text style={styles.instructions}>To get started, edit App.js</Text>
-                <Text style={styles.instructions}>{instructions}</Text>
-            </View>
+        <Container style={styles.container}>
+          <Header style={styles.header}>
+            <Left/>
+            <Body >
+              <Title style={styles.headerTitle}>Header</Title>
+            </Body>
+            <Right>
+              <Button transparent onPress={this._onLogoutPress.bind(this)}>
+                <Ionicons name='ios-power' size={25} color='tomato' />
+              </Button>
+            </Right>
+          </Header>
+          <Content padder  contentContainerStyle={{ flex: 1, justifyContent: 'center' }}>
+            <Text style={styles.welcome}>Welcome to React Native!</Text>
+            <Text style={styles.instructions}>To get started, edit App.js</Text>
+            <Text style={styles.instructions}>{instructions}</Text>
+          </Content>
+        </Container>
         )
     }
 }
 
 const styles = StyleSheet.create({
+    header: {
+      backgroundColor: '#FFF',
+      borderBottomWidth: 0.5,
+      borderBottomColor: 'gray'
+    },
+    headerTitle: {
+      color: 'gray',
+      alignSelf: 'flex-end'
+    },
     container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#F5FCFF',
+      //backgroundColor: '#F5FCFF',
+
     },
     welcome: {
       fontSize: 20,

@@ -4,8 +4,10 @@ const styles = StyleSheet.create({
 	btn: {
 		alignSelf: 'center',
 	},
-
-	marginBottom: {
+	marginItem: {
+		marginBottom: 15
+	},
+	marginButton: {
 		marginBottom: 30
 	},
 	wrapper: {

@@ -32,7 +32,7 @@ export default class Home extends Component{
     }
 
     _onLogoutPress() {
-      AsyncStorage.removeItem('auth_token')
+      AsyncStorage.removeItem('mern_todo_app_token')
       this.props.navigation.navigate('Login') 
     }
 
@@ -42,7 +42,7 @@ export default class Home extends Component{
           <Header style={styles.header}>
             <Left/>
             <Body >
-              <Title style={styles.headerTitle}>Header</Title>
+              <Title style={styles.headerTitle}>Tasks</Title>
             </Body>
             <Right>
               <Button transparent onPress={this._onLogoutPress.bind(this)}>

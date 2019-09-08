@@ -8,15 +8,15 @@ import Register from './register'
 import Splash from './splash'
 
 const AppNavigator = createStackNavigator({
+  Register: Register,
   Splash: {
     screen: Splash,
   },
-        Home: {
-          screen: Home,
-      
-      },
-	Login: Login,
-	Register: Register
+  Home: {
+    screen: Home,
+    
+  },
+  Login: Login,
 })
 
 /*

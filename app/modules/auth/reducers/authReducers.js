@@ -1,4 +1,4 @@
-const INITIAL_STATE = { user: null, loading: false, error: '' }
+const INITIAL_STATE = { user: null, loading: false, error: '', success: false }
 export default (state = INITIAL_STATE, action) => {
     switch(action.type) {
         case 'login_attempt':
@@ -9,6 +9,10 @@ export default (state = INITIAL_STATE, action) => {
             return {INITIAL_STATE, user: action.user}
         case 'register_attempt':
             return {...state, loading: true }
+        case 'register_failed':
+            return {INITIAL_STATE, error: action.errorMsg}
+        case 'register_success':
+            return {INITIAL_STATE, success: true}
         default:
             return state;
     }

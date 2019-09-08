@@ -18,7 +18,6 @@ const handleResponse = (dispatch, data) => {
     } else {
         AsyncStorage.setItem('auth_token', data.user.token)
         .then(() => {
-            console.log('ee')
             dispatch({ type: 'login_success', user: data.user})
         }) 
         
@@ -31,8 +30,17 @@ export const registerUser = ({ name, email, password }) => {
 
         //Call the back-end
         axios.post('https://rest-api-express-mongo.herokuapp.com/user/register', { name, email, password })
-            .then(resp => console.log(resp.data))
+            .then(resp => registerHandleResponse(dispatch, resp.data))
             .catch(err => console.error(err))
     }
     
+}
+
+const registerHandleResponse = (dispatch, data) => {
+    if(!data.success) {
+        dispatch({ type: 'register_failed', errorMsg: data.message })
+    } else {
+        dispatch({ type: 'register_success', user: data.user})
+ 
+    }
 }

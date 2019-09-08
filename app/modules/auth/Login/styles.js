@@ -12,7 +12,15 @@ const styles = StyleSheet.create({
 	},
 	wrapper: {
 		alignItems: 'center'
-	}
+	},
+	bordered: {
+		borderWidth: 2.5,
+		borderColor: '#d6d7da',
+		alignSelf: 'center',
+		marginBottom: 50
+	},
+
+	
 })
 
 export default styles
